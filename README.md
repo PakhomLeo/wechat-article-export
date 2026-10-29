@@ -24,16 +24,15 @@
 
 ```mermaid
 flowchart LR
-    A[清单 CSV<br/>类型 / entry_id / 文章名 / 链接] --> B[export.py plan<br/>分桶 + 生成微信表]
-    B --> C{链接类型}
-    C -- 短链 --> D[export.py fetch<br/>3 并发直抓]
-    C -- 长链 --> E[harvest.mjs<br/>微信文件传输助手转短链]
-    E --> F[export.py collect<br/>合并短链]
-    F --> D
-    D --> G[html/entry_id.html]
-    G --> H[export.py manifest<br/>批次 CSV 对账]
-    H --> I[push_batches.sh<br/>每批 90 个提交推送]
-    I --> J[(你自己的<br/>私有存档仓库)]
+    A["清单 CSV"] --> B["plan：分桶"]
+    B --> C{"长链 / 短链"}
+    C -- 短链 --> D["fetch：并发直抓"]
+    C -- 长链 --> E["微信：转短链"]
+    E --> D
+    D --> F["html/entry_id.html"]
+    F --> G["manifest：批次对账"]
+    G --> H["push_batches：分批推送"]
+    H --> I[("私有存档仓库")]
 ```
 
 ## 输出约定
