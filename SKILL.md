@@ -1,6 +1,6 @@
 ---
 name: wechat-article-export
-description: 批量导出微信公众号文章为整页 HTML（文件名 entry_id.html）并推送到 GitHub 存档仓库。适用于用户给出包含 entry_id、文章名称、链接（长链或短链）的清单，要求“抓取/补抓/归档公众号文章”“整页 HTML”“传到 GitHub”，或提到 wechat-article-archive 仓库时。短链直接抓；长链需通过微信桌面端「文件传输助手」转成短链后再抓。
+description: 批量导出微信公众号文章为整页 HTML（文件名 entry_id.html）并推送到 GitHub 存档仓库。适用于用户给出包含 entry_id、文章名称、链接（长链或短链）的清单，要求“抓取/补抓/归档公众号文章”“整页 HTML”“传到 GitHub”，或提到公众号存档仓库时。短链直接抓；长链需通过微信桌面端「文件传输助手」转成短链后再抓。目标仓库由用户自备（建议私有）。
 ---
 
 # 微信文章批量导出
@@ -10,8 +10,8 @@ description: 批量导出微信公众号文章为整页 HTML（文件名 entry_i
 1. 微信已登录，主窗口停在「文件传输助手」聊天，运行中不要动鼠标键盘。
 2. Computer Use 运行时可用；socket 缺失时先在 node_repl 里创建一次：
    `var cua = await (await import('@qoder-space/computer-use')).ComputerUse.createAppClient();`
-3. `gh auth status` 正常，目标仓库一般用私有仓库 `PakhomLeo/wechat-article-archive`。
-   本地没有副本时先 `gh repo clone PakhomLeo/wechat-article-archive`（仓库较大，可用 `-- --filter=blob:none` 后再按需 checkout）。
+3. `gh auth status` 正常，目标仓库用**你自己建的私有存档仓库**（例如 `<你的账号>/wechat-article-archive`，先 `gh repo create --private` 建）。
+   本地没有副本时先 `gh repo clone <你的账号>/wechat-article-archive`（仓库较大，可用 `-- --filter=blob:none` 后再按需 checkout）。
 4. 运行 harvest 时设 `QODER_CU_BINARY_PATH="$HOME/.qoder-cn/bin/qoder-cn-computer-use/Qoder CN Computer Use.app"`，
    运行时掉线后重启进程会自动拉起。
 

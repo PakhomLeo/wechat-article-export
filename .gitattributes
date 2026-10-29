@@ -1,0 +1,8 @@
+# 统一 LF 入库与检出：脚本要在 macOS / Linux 的 bash 和 python 下直接跑，
+# 避免 Windows 的 core.autocrlf 把 .sh / .py 改成 CRLF 后报错。
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
